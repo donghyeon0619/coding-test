@@ -34,6 +34,7 @@
 
 
 
+
 ## 풀이 2
 ## combination 함수를 이용
 from itertools import combinations
@@ -51,7 +52,11 @@ while True:
         for u in comb:
             print(u, end=" ")
         print()
+        ##  ↓
+        ##  print(' '.join(map(str, comb))) 로 한번에 할 수 있음
+        ##  이 떄 comb의 요소들을 str 즉 문자열로 바꿔야지 join함수를 사용 가능
     print()
+
 
 
 ## 풀이 3
@@ -64,7 +69,7 @@ while True:
     if inputs == '0':
         break
     else:
-        arr = list(map(int,inputs.split()))[1:0]
+        arr = list(map(int,inputs.split()))[1:]
 
         results = combinations(arr, 6)
         for result in results:
