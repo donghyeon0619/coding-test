@@ -1,9 +1,7 @@
-n = int(input())
-arr = [-1] * (n +2)
-arr[0] = 0
-arr[1] = 1
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-for i in range(2, n+1):
-    arr[i] = arr[i-1] + arr[i-2]
+print(arr)
+print(str(arr).replace(","," ")[1:-1])
 
-print(arr[n])
+print(" ".join(map(str, arr)))
+print(map(str, arr))
