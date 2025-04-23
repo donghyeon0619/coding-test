@@ -1,7 +1,6 @@
-arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+def test(x, y=[]):
+    y.append(x)
+    return y
 
-print(arr)
-print(str(arr).replace(","," ")[1:-1])
-
-print(" ".join(map(str, arr)))
-print(map(str, arr))
+print(test(1))
+print(test(2))
