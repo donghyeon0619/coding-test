@@ -45,3 +45,41 @@ n = int(input())
 a = list(map(int, input().split()))
 ans = max((sum(a)+1)//2, max(a))
 print(-1 if ans > 1440 else ans)
+
+
+# 네번째 풀이
+# 힙을 이용하면서 최대힙을 이용한 방식
+# 'PriorityQueue' 라이브러리를 사용하는 방법도 있고, heapq를 이용하는 방식이 있는데 코딩테스트에서는 heapq를 이용하는 방식이 적절함
+
+import heapq
+import sys
+
+N = int(sys.stdin.readline())
+snow = list(map(int, sys.stdin.readline()))
+
+heap = [-x for x in snow if x > 0]
+heapq.heapify(heap)
+
+minutes = 0
+while heap:
+    # 1번 큰 집 꺼내기
+    a = -heapq.heappop(heap)
+
+    # 두 번쨰 집이 있으면 같이 처리
+    if heap:
+        b = -heapq.heappop(heap)
+        a -= 1
+        b -= 1
+        minutes += 1
+        if a > 0:
+            heapq.heappush(heap, -a)
+        if b > 0:
+            heapq.heappush(heap, -b)
+    else:
+        # 마지막 집만 남았으면 한 분에 1씩
+        minutes += a
+        break
+
+print(-1 if minutes > 1440 else minutes)
+
+
