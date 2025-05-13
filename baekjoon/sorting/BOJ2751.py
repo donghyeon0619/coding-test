@@ -17,12 +17,13 @@ print('\n'.join(map(str, s_num)))
 
 # 두번쨰 풀이
 # 정렬을 이용하지 않고 카운팅 소트를 이용함
+# 마킹을 이용
 def sol():
-    a = [None]*2000001
+    a = [False]*2000001
     b = map(int, open(0))
     next(b)
     for i in b:
-        a[i] = 1
+        a[i] = True
         print("\n".join(str(i) for i in range(-1000000, 1000001, 1) if a[i]))
 
 
