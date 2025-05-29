@@ -3,65 +3,65 @@
 ## 첫번째 풀이
 ## 정석풀이
 ## 입력이 조건에서 "양방향"으로 주어졌으므로 인접리스트에 양쪽 노드에 대해 연결된 노드 추가해야 함
-# import sys
-# from collections import deque
-# input = sys.stdin.readline
-#
-#
-# # dfs 함수 정의
-# def dfs(node):
-#
-#     global dfs_visited, adj_list
-#
-#     # base case
-#     if dfs_visited[node]:
-#         return
-#     dfs_visited[node] = True
-#
-#     print(node, end=' ')
-#
-#     # recursive case
-#     for adj_node in adj_list[node]:
-#         dfs(adj_node)
-#
-#
-# # bfs 함수 정의
-# def bfs(node):
-#     global bfs_visited, adj_list
-#     q = deque()
-#
-#     q.append(node)
-#     bfs_visited[node] = True
-#     while q:
-#         node = q.popleft()
-#         print(node, end=' ')
-#
-#         for adj_node in adj_list[node]:
-#             if bfs_visited[adj_node]:
-#                 continue
-#
-#             q.append(adj_node)
-#             bfs_visited[adj_node] = True
-#
-#
-# N, M, V = map(int, input().split())
-#
-# dfs_visited = [False] * (N + 1)
-# bfs_visited = [False] * (N + 1)
-# adj_list = [[] for _ in range(N+1)]
-#
-# for _ in range(M):
-#     s, e = map(int, input().split())
-#     adj_list[s].append(e)
-#     adj_list[e].append(s)
-#
-# for i in range(1, N + 1):
-#     if len(adj_list[i]) > 1:
-#         adj_list[i].sort()
-#
-# dfs(V)
-# print()
-# bfs(V)
+import sys
+from collections import deque
+input = sys.stdin.readline
+
+
+# dfs 함수 정의
+def dfs(node):
+
+    global dfs_visited, adj_list
+
+    # base case
+    if dfs_visited[node]:
+        return
+    dfs_visited[node] = True
+
+    print(node, end=' ')
+
+    # recursive case
+    for adj_node in adj_list[node]:
+        dfs(adj_node)
+
+
+# bfs 함수 정의
+def bfs(node):
+    global bfs_visited, adj_list
+    q = deque()
+
+    q.append(node)
+    bfs_visited[node] = True
+    while q:
+        node = q.popleft()
+        print(node, end=' ')
+
+        for adj_node in adj_list[node]:
+            if bfs_visited[adj_node]:
+                continue
+
+            q.append(adj_node)
+            bfs_visited[adj_node] = True
+
+
+N, M, V = map(int, input().split())
+
+dfs_visited = [False] * (N + 1)
+bfs_visited = [False] * (N + 1)
+adj_list = [[] for _ in range(N+1)]
+
+for _ in range(M):
+    s, e = map(int, input().split())
+    adj_list[s].append(e)
+    adj_list[e].append(s)
+
+for i in range(1, N + 1):
+    if len(adj_list[i]) > 1:
+        adj_list[i].sort()
+
+dfs(V)
+print()
+bfs(V)
 
 
 ## 두번째 풀이
