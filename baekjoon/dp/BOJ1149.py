@@ -38,7 +38,7 @@ N = int(input())
 homes = [[0, 0, 0]] + [list(map(int, input().split())) for _ in range(N)]
 
 dp = [[0, 0, 0] for _ in range(N+1)]
-3
+
 for i in range(3):
     dp[1][i] = homes[1][i]
 
