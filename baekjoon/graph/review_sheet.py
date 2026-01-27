@@ -1,59 +1,29 @@
-## BOJ 1260
+## boj 2178
 from collections import deque
-import sys
-input = sys.stdin.readline
 
-def dfs(node):
-    global adj_list, dfs_visited
+def bfs(sx, sy):
 
-    if dfs_visited[node]:
-        return
-    dfs_visited[node] = True
+    global matrix, visited
 
-    print(node, end=" ")
+    dx = [1, 0, -1, 0]
+    dy = [0, -1, 0, 1]
 
-    for v in adj_list[node]:
-        dfs(v)
+    q = deque()
 
-
-def bfs(node):
-    global adj_list, bfs_visited
-
-    q = deque([node])
-    bfs_visited[node] = True
+    cnt = 0
+    q.append((sx, sy))
+    visited[sy][sx] = True
 
     while q:
-        v = q.popleft()
-        print(v, end=" ")
-
-        for a_v in adj_list[v]:
-            if not bfs_visited[a_v]:
-                bfs_visited[a_v] = True
-                q.append(a_v)
-
-
-N, M, V = map(int, input().split())
-adj_list = [[] for _ in range(N + 1)]
-
-for _ in range(M):
-    a, b = map(int, input().split())
-    adj_list[a].append(b)
-    adj_list[b].append(a)
-
-for n in range(N + 1):
-    adj_list[n].sort()
-
-dfs_visited = [False] * (N + 1)
-bfs_visited = [False] * (N + 1)
-
-
-dfs(V)
-print()
-bfs(V)
+        x, y = q.popleft()
+        for ndx, ndy in dx, dy:
+            if
 
 
 
 
+N, M = map(int, input().split())
 
-
+matrix = ['0' * (M + 1)] + ['0' + input() for _ in range(N)]
+visited = [[False] * (M + 1) for _ in range(N + 1)]
 
