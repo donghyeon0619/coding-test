@@ -130,7 +130,6 @@ def solution(info, edges):
     adj = [[] for _ in range(N)]
     for a, b in edges:
         adj[a].append(b)
-        adj[b].append(a)
 
     q = deque()
     q.append((1 << 0, 1, 0))   # mask, sheep, wolf
