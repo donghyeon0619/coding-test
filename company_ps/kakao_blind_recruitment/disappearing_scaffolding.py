@@ -33,33 +33,33 @@
 # def play(board, aloc, bloc):
 
 ## 두번쨰 풀이
-# def solution(board, aloc, bloc):
-#     n, m = len(board), len(board[0])
-#
-#     def dfs(ax, ay, bx, by):
-#         if board[ax][ay] == 0:
-#             return False, 0
-#
-#         best_win = float('inf')     # 이기는 수 중 최소
-#         best_lose = 0               # 지는 수 중 최대
-#
-#         for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1),):
-#             nx, ny = ax+dx, ay+dy
-#             if 0 <= nx < n and 0 <= ny < m and board[nx][ny]:
-#                 board[ax][ay] = 0
-#                 opp_win, cnt = dfs(bx, by, nx, ny)
-#                 board[ax][ay] = 1
-#
-#                 if not opp_win:
-#                     best_win = min(best_win, cnt + 1)
-#                 else:
-#                     best_lose = max(best_lose, cnt + 1)
-#
-#         if best_win < float('inf'):
-#             return True, best_win
-#         return False, best_lose
-#
-#     return dfs(*aloc, *bloc)[1]
+def solution(board, aloc, bloc):
+    n, m = len(board), len(board[0])
+
+    def dfs(ax, ay, bx, by):
+        if board[ax][ay] == 0:
+            return False, 0
+
+        best_win = float('inf')     # 이기는 수 중 최소
+        best_lose = 0               # 지는 수 중 최대
+
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1),):
+            nx, ny = ax+dx, ay+dy
+            if 0 <= nx < n and 0 <= ny < m and board[nx][ny]:
+                board[ax][ay] = 0
+                opp_win, cnt = dfs(bx, by, nx, ny)
+                board[ax][ay] = 1
+
+                if not opp_win:
+                    best_win = min(best_win, cnt + 1)
+                else:
+                    best_lose = max(best_lose, cnt + 1)
+
+        if best_win < float('inf'):
+            return True, best_win
+        return False, best_lose
+
+    return dfs(*aloc, *bloc)[1]
 
 ## 세번째 풀이 (강의 풀이)
 from copy import deepcopy
